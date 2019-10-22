@@ -1,8 +1,4 @@
-package id.co.endang.mynotesapp;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+package id.co.endang.consumerapp;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -18,17 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import id.co.endang.mynotesapp.db.DatabaseContract;
-import id.co.endang.mynotesapp.db.NoteHelper;
-import id.co.endang.mynotesapp.entity.Note;
-import id.co.endang.mynotesapp.helper.MappingHelper;
-
-import static id.co.endang.mynotesapp.db.DatabaseContract.NoteColums.CONTENT_URI;
+import id.co.endang.consumerapp.db.DatabaseContract;
+import id.co.endang.consumerapp.entity.Note;
+import id.co.endang.consumerapp.helper.MappingHelper;
 
 public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -76,8 +73,8 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
 
         if (isEdit) {
             //Uri yang didapatkan disini akan digunakan untuk ambil data dari provider
-            // content://id.co.endang.mynotesapp/note/id
-            uriWithId = Uri.parse(CONTENT_URI + "/" + note.getId());
+            // content://id.co.endang.consumerapp/note/id
+            uriWithId = Uri.parse(DatabaseContract.NoteColums.CONTENT_URI + "/" + note.getId());
             if (uriWithId != null) {
                 Cursor cursor = getContentResolver().query(uriWithId, null, null, null, null);
                 if (cursor != null) {
@@ -131,7 +128,7 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
             if (isEdit) {
                 //long result = noteHelper.update(String.valueOf(note.getId()), values);
                 //Gunakan uriWithId untuk update
-                // content://id.co.endang.mynotesapp/note/id
+                // content://id.co.endang.consumerapp/note/id
                 getContentResolver().update(uriWithId, values, null, null);
                 Toast.makeText(NoteAddUpdateActivity.this, "Satu item berhasil di edit", Toast.LENGTH_SHORT).show();
                 finish();
@@ -145,8 +142,8 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
                 note.setDate(getCurrentDate());
                 values.put(DatabaseContract.NoteColums.DATE, getCurrentDate());
                 //Gunakan content uri untuk insert
-                // content://id.co.endang.mynotesapp/note/
-                getContentResolver().insert(CONTENT_URI, values);
+                // content://id.co.endang.consumerapp/note/
+                getContentResolver().insert(DatabaseContract.NoteColums.CONTENT_URI, values);
                 Toast.makeText(this, "Satu item berhasil disimpan", Toast.LENGTH_SHORT).show();
                 finish();
 //                long result = noteHelper.insert(values);
@@ -211,9 +208,9 @@ public class NoteAddUpdateActivity extends AppCompatActivity implements View.OnC
                             finish();
                         } else {
                             // Gunakan uriWithId untuk delete
-                            //conten://id.co.endang.mynotesapp/note/id
-                            getContentResolver().delete(uriWithId,null,null);
-                            Toast.makeText(NoteAddUpdateActivity.this,"satu data berhasil didelete",Toast.LENGTH_SHORT).show();
+                            //conten://id.co.endang.consumerapp/note/id
+                            getContentResolver().delete(uriWithId, null, null);
+                            Toast.makeText(NoteAddUpdateActivity.this, "satu data berhasil didelete", Toast.LENGTH_SHORT).show();
                             finish();
 //                            long result = noteHelper.deleteById(String.valueOf(note.getId()));
 //                            if (result > 0) {

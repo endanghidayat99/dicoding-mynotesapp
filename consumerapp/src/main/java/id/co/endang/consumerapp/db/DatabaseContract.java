@@ -1,4 +1,4 @@
-package id.co.endang.mynotesapp.db;
+package id.co.endang.consumerapp.db;
 
 import android.net.Uri;
 import android.provider.BaseColumns;

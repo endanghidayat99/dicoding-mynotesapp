@@ -1,11 +1,11 @@
-package id.co.endang.mynotesapp.helper;
+package id.co.endang.consumerapp.helper;
 
 import android.database.Cursor;
 
 import java.util.ArrayList;
 
-import id.co.endang.mynotesapp.db.DatabaseContract;
-import id.co.endang.mynotesapp.entity.Note;
+import id.co.endang.consumerapp.db.DatabaseContract;
+import id.co.endang.consumerapp.entity.Note;
 
 public class MappingHelper {
 

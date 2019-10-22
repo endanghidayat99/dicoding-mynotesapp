@@ -1,10 +1,4 @@
-package id.co.endang.mynotesapp;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package id.co.endang.consumerapp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,17 +11,22 @@ import android.os.HandlerThread;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import id.co.endang.mynotesapp.adapter.NoteAdapter;
-import id.co.endang.mynotesapp.db.DatabaseContract;
-import id.co.endang.mynotesapp.db.NoteHelper;
-import id.co.endang.mynotesapp.entity.Note;
-import id.co.endang.mynotesapp.helper.MappingHelper;
+import id.co.endang.consumerapp.adapter.NoteAdapter;
+import id.co.endang.consumerapp.db.DatabaseContract;
+import id.co.endang.consumerapp.entity.Note;
+import id.co.endang.consumerapp.helper.MappingHelper;
 
 public class MainActivity extends AppCompatActivity implements LoadNotesCallback {
 
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
     private NoteAdapter adapter;
 
     private FloatingActionButton fabAdd;
-    private NoteHelper noteHelper;
 
     private static final String EXTRA_STATE = "EXTRA_STATE";
 
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements LoadNotesCallback
         setContentView(R.layout.activity_main);
 
         if (getSupportActionBar() != null)
-            getSupportActionBar().setTitle("Notes");
+            getSupportActionBar().setTitle("Consumer Notes");
 
 
         progressBar = findViewById(R.id.progressbar);
